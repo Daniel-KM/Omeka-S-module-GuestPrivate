@@ -7,7 +7,7 @@ Guest Private Role (module for Omeka S)
 
 [Guest Private Role] is a module for [Omeka S] that creates a role called `guest_private`,
 allowing users to see all sites, site pages and resources that are public or
-private. The private guest has no admin permission and cannot got to the admin
+private. The private guest has no admin permission and cannot go to the admin
 board.
 
 This module may be useful for example when a site is in development and all
