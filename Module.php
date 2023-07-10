@@ -24,6 +24,23 @@ class Module extends AbstractModule
         $services = $this->getServiceLocator();
         $acl = $services->get('Omeka\Acl');
 
+        if (version_compare(\Omeka\Module::VERSION, '3.2', '<')) {
+            $aclResources = [
+                \Omeka\Entity\Resource::class,
+                \Omeka\Entity\Site::class,
+                \Omeka\Entity\SitePage::class,
+                \Omeka\Entity\Value::class,
+            ];
+        } else {
+            $aclResources = [
+                \Omeka\Entity\Resource::class,
+                \Omeka\Entity\Site::class,
+                \Omeka\Entity\SitePage::class,
+                \Omeka\Entity\Value::class,
+                \Omeka\Entity\ValueAnnotation::class,
+            ];
+        }
+
         // Other modules can add the same role for easier management.
         if (!$acl->hasRole(self::ROLE_GUEST_PRIVATE)) {
             $acl->addRole(self::ROLE_GUEST_PRIVATE);
@@ -40,13 +57,7 @@ class Module extends AbstractModule
             )
             ->allow(
                 [self::ROLE_GUEST_PRIVATE],
-                [
-                    \Omeka\Entity\Resource::class,
-                    \Omeka\Entity\Site::class,
-                    \Omeka\Entity\SitePage::class,
-                    \Omeka\Entity\Value::class,
-                    \Omeka\Entity\ValueAnnotation::class,
-                ],
+                $aclResources,
                 [
                     'read',
                     'view-all',
