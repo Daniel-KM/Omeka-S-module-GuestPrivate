@@ -15,6 +15,11 @@ return [
             ],
         ],
     ],
+    'controller_plugins' => [
+        'invokables' => [
+            'userRedirectUrl' => Mvc\Controller\Plugin\UserRedirectUrl::class,
+        ],
+    ],
     'translator' => [
         'translation_file_patterns' => [
             [
