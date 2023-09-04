@@ -52,7 +52,7 @@ class Module extends AbstractModule
                 [self::ROLE_GUEST_PRIVATE],
                 [
                     'Omeka\Controller\SiteAdmin\Index',
-                    'Omeka\Controller\SiteAdmin\Page'
+                    'Omeka\Controller\SiteAdmin\Page',
                 ]
             )
             ->allow(
@@ -77,7 +77,11 @@ class Module extends AbstractModule
 
     /**
      * @see https://github.com/omeka/omeka-s/pull/1961
-     * @uses \GuestPrivateRole\Mvc\Controller\Plugin\UserRedirectUrl
+     * @uses \Guest\Mvc\Controller\Plugin\UserRedirectUrl
+     *
+     * Copy :
+     * @see \Guest\Module::handleUserLogin()
+     * @see \GuestPrivateRole\Module::handleUserLogin()
      */
     public function handleUserLogin(Event $event): void
     {
