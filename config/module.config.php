@@ -16,8 +16,8 @@ return [
         ],
     ],
     'controller_plugins' => [
-        'invokables' => [
-            'userRedirectUrl' => Mvc\Controller\Plugin\UserRedirectUrl::class,
+        'factories' => [
+            'userRedirectUrl' => Service\ControllerPlugin\UserRedirectUrlFactory::class,
         ],
     ],
     'translator' => [
