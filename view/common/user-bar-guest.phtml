@@ -35,7 +35,7 @@ $this->headLink()
             $url = $isGuest
                 ? ($hasGuest ? $urlHelper('site/guest', ['site-slug' => $site->slug(), 'action' => 'me']) : null)
                 : $urlHelper('admin/id', ['controller' => 'user', 'id' => $user->getId()]);
-            echo sprintf($translate('Signed in as %s', $translate), $url ? $hyperlink($user->getName(), $url) : $user->getName());
+            echo sprintf($translate('Signed in as %s', null, $userLocale), $url ? $hyperlink($user->getName(), $url) : $user->getName());
             ?>
         </span>
         <?php
