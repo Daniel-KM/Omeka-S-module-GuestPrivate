@@ -12,7 +12,7 @@ board.
 
 This module may be useful for example when a site is in development and all
 sites, pages and resources are private, but an external person needs to see and
-check it.
+check them.
 
 
 Installation
@@ -22,7 +22,7 @@ Uncompress files in the module directory and rename module folder `Guest`.
 
 Then install it like any other Omeka module and follow the config instructions.
 
-See general end user documentation for [Installing a module].
+See general end user documentation for [installing a module].
 
 
 Usage
@@ -72,13 +72,13 @@ altered, and that no provisions are either added or removed herefrom.
 Copyright
 ---------
 
-* Copyright Daniel Berthereau, 2023 (see [Daniel-KM] on GitLab)
+* Copyright Daniel Berthereau, 2023-2024 (see [Daniel-KM] on GitLab)
 
 
 [Guest Private Role]: https://gitlab.com/Daniel-KM/Omeka-S-module-GuestPrivateRole
 [Omeka S]: https://www.omeka.org/s
 [GitLab]: https://gitlab.com/Daniel-KM/Omeka-S-module-GuestPrivateRole
-[Installing a module]: https://omeka.org/s/docs/user-manual/modules/#installing-modules
+[installing a module]: https://omeka.org/s/docs/user-manual/modules/#installing-modules
 [module issues]: https://gitlab.com/Daniel-KM/Omeka-S-module-GuestPrivateRole/-/issues
 [CeCILL v2.1]: https://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html
 [GNU/GPL]: https://www.gnu.org/licenses/gpl-3.0.html
