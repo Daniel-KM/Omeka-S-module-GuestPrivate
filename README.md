@@ -72,7 +72,7 @@ altered, and that no provisions are either added or removed herefrom.
 Copyright
 ---------
 
-* Copyright Daniel Berthereau, 2023-2024 (see [Daniel-KM] on GitLab)
+* Copyright Daniel Berthereau, 2023-2025 (see [Daniel-KM] on GitLab)
 
 
 [Guest Private Role]: https://gitlab.com/Daniel-KM/Omeka-S-module-GuestPrivateRole
