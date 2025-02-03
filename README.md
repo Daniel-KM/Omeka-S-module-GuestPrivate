@@ -1,11 +1,11 @@
-Guest Private Role (module for Omeka S)
-=======================================
+Guest Private (module for Omeka S)
+==================================
 
 > __New versions of this module and support for Omeka S version 3.0 and above
 > are available on [GitLab], which seems to respect users and privacy better
 > than the previous repository.__
 
-[Guest Private Role] is a module for [Omeka S] that creates a role called `guest_private`,
+[Guest Private] is a module for [Omeka S] that creates a role called `guest_private`,
 allowing users to see all sites, site pages and resources that are public or
 private. The private guest has no admin permission and cannot go to the admin
 board.
@@ -75,11 +75,11 @@ Copyright
 * Copyright Daniel Berthereau, 2023-2025 (see [Daniel-KM] on GitLab)
 
 
-[Guest Private Role]: https://gitlab.com/Daniel-KM/Omeka-S-module-GuestPrivateRole
+[Guest Private Role]: https://gitlab.com/Daniel-KM/Omeka-S-module-GuestPrivate
 [Omeka S]: https://www.omeka.org/s
-[GitLab]: https://gitlab.com/Daniel-KM/Omeka-S-module-GuestPrivateRole
+[GitLab]: https://gitlab.com/Daniel-KM/Omeka-S-module-GuestPrivate
 [installing a module]: https://omeka.org/s/docs/user-manual/modules/#installing-modules
-[module issues]: https://gitlab.com/Daniel-KM/Omeka-S-module-GuestPrivateRole/-/issues
+[module issues]: https://gitlab.com/Daniel-KM/Omeka-S-module-GuestPrivate/-/issues
 [CeCILL v2.1]: https://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html
 [GNU/GPL]: https://www.gnu.org/licenses/gpl-3.0.html
 [FSF]: https://www.fsf.org

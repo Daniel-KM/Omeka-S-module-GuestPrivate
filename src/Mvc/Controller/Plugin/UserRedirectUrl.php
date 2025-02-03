@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace GuestPrivateRole\Mvc\Controller\Plugin;
+namespace GuestPrivate\Mvc\Controller\Plugin;
 
 use Laminas\Mvc\Controller\Plugin\AbstractPlugin;
 use Laminas\Mvc\Controller\Plugin\Url;
@@ -13,7 +13,7 @@ use Omeka\Mvc\Controller\Plugin\UserIsAllowed;
 /**
  * Copy:
  * @see \Guest\Mvc\Controller\Plugin\UserRedirectUrl
- * @see \GuestPrivateRole\Mvc\Controller\Plugin\UserRedirectUrl
+ * @see \GuestPrivate\Mvc\Controller\Plugin\UserRedirectUrl
  */
 class UserRedirectUrl extends AbstractPlugin
 {

@@ -1,12 +1,19 @@
 <?php declare(strict_types=1);
 
-namespace GuestPrivateRole;
+namespace GuestPrivate;
 
 use Laminas\EventManager\Event;
 use Laminas\EventManager\SharedEventManagerInterface;
 use Laminas\Mvc\MvcEvent;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 use Omeka\Module\AbstractModule;
 
+/**
+ * Guest Private.
+ *
+ * @copyright Daniel Berthereau, 2023-2025
+ * @license http://www.cecill.info/licences/Licence_CeCILL_V2.1-en.txt
+ */
 class Module extends AbstractModule
 {
     const ROLE_GUEST_PRIVATE = 'guest_private';
@@ -14,6 +21,13 @@ class Module extends AbstractModule
     public function getConfig()
     {
         return include __DIR__ . '/config/module.config.php';
+    }
+
+    public function install(ServiceLocatorInterface $services)
+    {
+        /** @var \Doctrine\DBAL\Connection $connection */
+        $connection = $services->get('Omeka\Connection');
+        $connection->executeStatement('DELETE FROM `module` WHERE `id` = "GuestPrivateRole";');
     }
 
     public function onBootstrap(MvcEvent $event)
@@ -81,7 +95,7 @@ class Module extends AbstractModule
      *
      * Copy :
      * @see \Guest\Module::handleUserLogin()
-     * @see \GuestPrivateRole\Module::handleUserLogin()
+     * @see \GuestPrivate\Module::handleUserLogin()
      */
     public function handleUserLogin(Event $event): void
     {

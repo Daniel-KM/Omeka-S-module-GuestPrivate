@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace GuestPrivateRole;
+namespace GuestPrivate;
 
 return [
     'view_manager' => [

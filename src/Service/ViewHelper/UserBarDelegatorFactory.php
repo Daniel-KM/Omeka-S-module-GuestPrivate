@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace GuestPrivateRole\Service\ViewHelper;
+namespace GuestPrivate\Service\ViewHelper;
 
-use GuestPrivateRole\View\Helper\UserBarDelegator;
+use GuestPrivate\View\Helper\UserBarDelegator;
 use Interop\Container\ContainerInterface;
 use Laminas\ServiceManager\Factory\DelegatorFactoryInterface;
 

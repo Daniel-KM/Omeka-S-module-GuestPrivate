@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace GuestPrivateRole\View\Helper;
+namespace GuestPrivate\View\Helper;
 
 use Laminas\View\Renderer\RendererInterface;
 use Omeka\Api\Representation\SiteRepresentation;
@@ -18,7 +18,7 @@ use Omeka\View\Helper\UserBar;
  * Copy:
  * @see \AdvancedSearch\View\Helper\UserBarDelegator
  * @see \Guest\View\Helper\UserBarDelegator
- * @see \GuestPrivateRole\View\Helper\UserBarDelegator
+ * @see \GuestPrivate\View\Helper\UserBarDelegator
  */
 class UserBarDelegator extends UserBar
 {

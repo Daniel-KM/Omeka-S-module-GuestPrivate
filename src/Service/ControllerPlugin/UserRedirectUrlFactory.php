@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace GuestPrivateRole\Service\ControllerPlugin;
+namespace GuestPrivate\Service\ControllerPlugin;
 
-use GuestPrivateRole\Mvc\Controller\Plugin\UserRedirectUrl;
+use GuestPrivate\Mvc\Controller\Plugin\UserRedirectUrl;
 use Interop\Container\ContainerInterface;
 use Laminas\ServiceManager\Factory\FactoryInterface;
 
