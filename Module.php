@@ -4,6 +4,7 @@ namespace GuestPrivate;
 
 use Common\TraitModule;
 use GuestPrivate\Permissions\Acl as GuestPrivateAcl;
+use GuestPrivate\Permissions\Assertion as GuestPrivateAssertion;
 use Laminas\EventManager\Event;
 use Laminas\EventManager\SharedEventManagerInterface;
 use Laminas\Mvc\MvcEvent;
@@ -40,7 +41,57 @@ class Module extends AbstractModule
         $services = $this->getServiceLocator();
         $acl = $services->get('Omeka\Acl');
 
+        // The private site role can see private site, but not the private
+        // pages, neither the private resources.
+
         // Other modules can add the same role for easier management.
+        if (!$acl->hasRole(GuestPrivateAcl::ROLE_GUEST_PRIVATE_SITE)) {
+            $acl->addRole(GuestPrivateAcl::ROLE_GUEST_PRIVATE_SITE);
+        }
+
+        $acl
+            ->addRoleLabel(GuestPrivateAcl::ROLE_GUEST_PRIVATE_SITE, 'Guest private site'); // @translate
+        $acl
+            ->deny(
+                [GuestPrivateAcl::ROLE_GUEST_PRIVATE_SITE],
+                [
+                    'Omeka\Controller\SiteAdmin\Index',
+                    'Omeka\Controller\SiteAdmin\Page',
+                ]
+            )
+            ->allow(
+                [GuestPrivateAcl::ROLE_GUEST_PRIVATE_SITE],
+                [
+                    \Omeka\Entity\Site::class,
+                ],
+                [
+                    'read',
+                    'view-all',
+                ]
+            )
+            /*
+            ->allow(
+                [GuestPrivateAcl::ROLE_GUEST_PRIVATE_SITE],
+                [\Omeka\Entity\SitePage::class],
+                [
+                    'read',
+                    'view-all',
+                ],
+                new OmekaAssertion\SitePageIsPublicAssertion
+            )
+            */
+            // FIXME Allow access only to public pages of private site.
+            ->allow(
+                [GuestPrivateAcl::ROLE_GUEST_PRIVATE_SITE],
+                [\Omeka\Entity\SitePage::class],
+                [
+                    'read',
+                    'view-all',
+                ]
+                // new GuestPrivateAssertion\SitePageIsPublicAllSitesAssertion()
+            )
+        ;
+
         if (!$acl->hasRole(GuestPrivateAcl::ROLE_GUEST_PRIVATE)) {
             $acl->addRole(GuestPrivateAcl::ROLE_GUEST_PRIVATE);
         }

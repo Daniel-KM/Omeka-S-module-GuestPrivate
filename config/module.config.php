@@ -12,6 +12,12 @@ return [
             'admin' => false,
             'parents' => [],
         ],
+        GuestPrivateAcl::ROLE_GUEST_PRIVATE_SITE => [
+            'role' => GuestPrivateAcl::ROLE_GUEST_PRIVATE_SITE,
+            'label' => 'Guest private site', // @translate
+            'admin' => false,
+            'parents' => [],
+        ],
     ],
     'service_manager' => [
         'invokables' => [
