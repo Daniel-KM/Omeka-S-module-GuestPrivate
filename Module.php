@@ -2,6 +2,7 @@
 
 namespace GuestPrivate;
 
+use GuestPrivate\Permissions\Acl as GuestPrivateAcl;
 use Laminas\EventManager\Event;
 use Laminas\EventManager\SharedEventManagerInterface;
 use Laminas\Mvc\MvcEvent;
@@ -16,15 +17,19 @@ use Omeka\Module\AbstractModule;
  */
 class Module extends AbstractModule
 {
-    const ROLE_GUEST_PRIVATE = 'guest_private';
-
     public function getConfig()
     {
+        // Required during install because the role is set in config.
+        require_once __DIR__ . '/src/Permissions/Acl.php';
+
         return include __DIR__ . '/config/module.config.php';
     }
 
     public function install(ServiceLocatorInterface $services)
     {
+        // Required during install because the role is set in config.
+        require_once __DIR__ . '/src/Permissions/Acl.php';
+
         /** @var \Doctrine\DBAL\Connection $connection */
         $connection = $services->get('Omeka\Connection');
         $connection->executeStatement('DELETE FROM `module` WHERE `id` = "GuestPrivateRole";');
@@ -38,40 +43,29 @@ class Module extends AbstractModule
         $services = $this->getServiceLocator();
         $acl = $services->get('Omeka\Acl');
 
-        if (version_compare(\Omeka\Module::VERSION, '3.2', '<')) {
-            $aclResources = [
-                \Omeka\Entity\Resource::class,
-                \Omeka\Entity\Site::class,
-                \Omeka\Entity\SitePage::class,
-                \Omeka\Entity\Value::class,
-            ];
-        } else {
-            $aclResources = [
-                \Omeka\Entity\Resource::class,
-                \Omeka\Entity\Site::class,
-                \Omeka\Entity\SitePage::class,
-                \Omeka\Entity\Value::class,
-                \Omeka\Entity\ValueAnnotation::class,
-            ];
-        }
-
         // Other modules can add the same role for easier management.
-        if (!$acl->hasRole(self::ROLE_GUEST_PRIVATE)) {
-            $acl->addRole(self::ROLE_GUEST_PRIVATE);
+        if (!$acl->hasRole(GuestPrivateAcl::ROLE_GUEST_PRIVATE)) {
+            $acl->addRole(GuestPrivateAcl::ROLE_GUEST_PRIVATE);
         }
         $acl
-            ->addRoleLabel(self::ROLE_GUEST_PRIVATE, 'Guest private'); // @translate
+            ->addRoleLabel(GuestPrivateAcl::ROLE_GUEST_PRIVATE, 'Guest private'); // @translate
         $acl
             ->deny(
-                [self::ROLE_GUEST_PRIVATE],
+                [GuestPrivateAcl::ROLE_GUEST_PRIVATE],
                 [
                     'Omeka\Controller\SiteAdmin\Index',
                     'Omeka\Controller\SiteAdmin\Page',
                 ]
             )
             ->allow(
-                [self::ROLE_GUEST_PRIVATE],
-                $aclResources,
+                [GuestPrivateAcl::ROLE_GUEST_PRIVATE],
+                [
+                    \Omeka\Entity\Resource::class,
+                    \Omeka\Entity\Site::class,
+                    \Omeka\Entity\SitePage::class,
+                    \Omeka\Entity\Value::class,
+                    \Omeka\Entity\ValueAnnotation::class,
+                ],
                 [
                     'read',
                     'view-all',

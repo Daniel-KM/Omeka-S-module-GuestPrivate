@@ -2,7 +2,17 @@
 
 namespace GuestPrivate;
 
+use GuestPrivate\Permissions\Acl as GuestPrivateAcl;
+
 return [
+    'roles' => [
+        GuestPrivateAcl::ROLE_GUEST_PRIVATE => [
+            'role' => GuestPrivateAcl::ROLE_GUEST_PRIVATE,
+            'label' => 'Guest private', // @translate
+            'admin' => false,
+            'parents' => [],
+        ],
+    ],
     'view_manager' => [
         'template_path_stack' => [
             dirname(__DIR__) . '/view',
