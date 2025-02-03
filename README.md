@@ -5,30 +5,42 @@ Guest Private (module for Omeka S)
 > are available on [GitLab], which seems to respect users and privacy better
 > than the previous repository.__
 
-[Guest Private] is a module for [Omeka S] that creates a role called `guest_private`,
-allowing users to see all sites, site pages and resources that are public or
-private. The private guest has no admin permission and cannot go to the admin
-board.
+[Guest Private] is a module for [Omeka S] that creates two roles to manage
+users: `guest_private_site`, who can see all sites, public or private, but not
+private pages or private resources; `guest_private`, who can see all sites, site
+pages and resources that are public or private. They don't have admin permission
+and cannot go to the admin board.
 
-This module may be useful for example when a site is in development and all
-sites, pages and resources are private, but an external person needs to see and
-check them.
+This module may be useful when all sites are private, so guest user can see
+protected resources. Another use case is a site in development with all sites,
+pages and resources set private, but an external person needs to see and check
+them.
 
 
 Installation
 ------------
 
-Uncompress files in the module directory and rename module folder `Guest`.
+See general end user documentation for [installing a module].
+
+This module requires the module [Common], that should be installed first.
+
+* From the zip
+
+Download the last release [GuestPrivate.zip] from the list of releases, and
+uncompress it in the `modules` directory.
+
+* From the source and for development
+
+If the module was installed from the source, rename the name of the folder of
+the module to `GuestPrivate`.
 
 Then install it like any other Omeka module and follow the config instructions.
-
-See general end user documentation for [installing a module].
 
 
 Usage
 -----
 
-Simply set the role "Guest private" in the user settings.
+Simply set the role "Guest private site" or "Guest private" in the user settings.
 
 
 Warning
@@ -74,6 +86,8 @@ Copyright
 
 * Copyright Daniel Berthereau, 2023-2025 (see [Daniel-KM] on GitLab)
 
+This module was build for the [Fondation Maison de Salins].
+
 
 [Guest Private Role]: https://gitlab.com/Daniel-KM/Omeka-S-module-GuestPrivate
 [Omeka S]: https://www.omeka.org/s
@@ -85,4 +99,5 @@ Copyright
 [FSF]: https://www.fsf.org
 [OSI]: http://opensource.org
 [GitLab]: https://gitlab.com/Daniel-KM
+[Fondation Maison de Salins]: https://collections.maison-salins.fr
 [Daniel-KM]: https://gitlab.com/Daniel-KM "Daniel Berthereau"
