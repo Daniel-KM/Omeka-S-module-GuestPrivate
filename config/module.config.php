@@ -13,6 +13,14 @@ return [
             'parents' => [],
         ],
     ],
+    'service_manager' => [
+        'invokables' => [
+            Mvc\MvcListeners::class => Mvc\MvcListeners::class,
+        ],
+    ],
+    'listeners' => [
+        Mvc\MvcListeners::class,
+    ],
     'view_manager' => [
         'template_path_stack' => [
             dirname(__DIR__) . '/view',
@@ -23,6 +31,11 @@ return [
             \Omeka\View\Helper\UserBar::class => [
                 Service\ViewHelper\UserBarDelegatorFactory::class,
             ],
+        ],
+    ],
+    'form_elements' => [
+        'invokables' => [
+            Form\SettingsFieldset::class => Form\SettingsFieldset::class,
         ],
     ],
     'controller_plugins' => [
@@ -38,6 +51,11 @@ return [
                 'pattern' => '%s.mo',
                 'text_domain' => null,
             ],
+        ],
+    ],
+    'guestprivate' => [
+        'settings' => [
+            'guestprivate_theme_login' => false,
         ],
     ],
 ];

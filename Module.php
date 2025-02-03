@@ -2,6 +2,7 @@
 
 namespace GuestPrivate;
 
+use Common\TraitModule;
 use GuestPrivate\Permissions\Acl as GuestPrivateAcl;
 use Laminas\EventManager\Event;
 use Laminas\EventManager\SharedEventManagerInterface;
@@ -17,13 +18,9 @@ use Omeka\Module\AbstractModule;
  */
 class Module extends AbstractModule
 {
-    public function getConfig()
-    {
-        // Required during install because the role is set in config.
-        require_once __DIR__ . '/src/Permissions/Acl.php';
+    use TraitModule;
 
-        return include __DIR__ . '/config/module.config.php';
-    }
+    const NAMESPACE = __NAMESPACE__;
 
     public function install(ServiceLocatorInterface $services)
     {
@@ -80,6 +77,12 @@ class Module extends AbstractModule
             '*',
             'user.login',
             [$this, 'handleUserLogin']
+        );
+
+        $sharedEventManager->attach(
+            \Omeka\Form\SettingForm::class,
+            'form.add_elements',
+            [$this, 'handleMainSettings']
         );
     }
 
