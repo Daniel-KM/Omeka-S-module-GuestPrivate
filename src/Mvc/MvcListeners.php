@@ -17,6 +17,10 @@ class MvcListeners extends AbstractListenerAggregate
             MvcEvent::EVENT_ROUTE,
             [$this, 'setSiteForMainLogin']
         );
+        $this->listeners[] = $events->attach(
+            MvcEvent::EVENT_ROUTE,
+            [$this, 'disablePublicApi']
+        );
     }
 
     public function setSiteForMainLogin(MvcEvent $event)
@@ -150,5 +154,30 @@ class MvcListeners extends AbstractListenerAggregate
         $routeMatch
             ->setParam('site-slug', $siteEntity->getSlug())
             ->setParam('outside', true);
+    }
+
+    public function disablePublicApi(MvcEvent $event)
+    {
+        $services = $event->getApplication()->getServiceManager();
+        $auth = $services->get('Omeka\AuthenticationService');
+
+        if ($auth->hasIdentity()) {
+            return;
+        }
+
+        $routeMatch = $event->getRouteMatch();
+        $matchedRouteName = $routeMatch->getMatchedRouteName();
+        if ($matchedRouteName !== 'api/default') {
+            return;
+        }
+
+        $params =  [
+            '__API__' => true,
+            '__KEYAUTH__' => true,
+            'controller' => 'Omeka\Controller\Api',
+        ];
+        $routeMatch = new RouteMatch($params);
+        $routeMatch->setMatchedRouteName('api');
+        $event->setRouteMatch($routeMatch);
     }
 }

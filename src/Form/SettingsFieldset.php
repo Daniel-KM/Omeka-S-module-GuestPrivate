@@ -47,6 +47,18 @@ class SettingsFieldset extends Fieldset
                     'required' => false,
                 ],
             ])
+            ->add([
+                'name' => 'guestprivate_disable_public_api',
+                'type' => Element\Checkbox::class,
+                'options' => [
+                    'element_group' => 'guest',
+                    'label' => 'Disable public api', // @translate
+                    'info' => 'This setting is useful when all sites are private, but resources are public. The api remains available with credentials.', // @translate
+                ],
+                'attributes' => [
+                    'id' => 'guestprivate_disable_public_api',
+                ],
+            ])
         ;
     }
 }
