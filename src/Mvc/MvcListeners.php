@@ -30,7 +30,7 @@ class MvcListeners extends AbstractListenerAggregate
 
         $routeMatch = $event->getRouteMatch();
         $matchedRouteName = $routeMatch->getMatchedRouteName();
-        if (!in_array($matchedRouteName, ['login', 'create-password', 'forgot-password'])) {
+        if (!in_array($matchedRouteName, ['top', 'login', 'maintenance', 'create-password', 'forgot-password'])) {
             return;
         }
 
