@@ -36,6 +36,27 @@ class MvcListeners extends AbstractListenerAggregate
 
         /** @var \Omeka\Settings\Settings $settings */
         $settings = $services->get('Omeka\Settings');
+
+        // Redirect early to login when there is no public site.
+        if ($matchedRouteName === 'top'
+            && $settings->get('guestprivate_redirect_top_to_login')
+        ) {
+            /** @var \Doctrine\ORM\EntityManager $entityManager */
+            $entityManager = $services->get('Omeka\EntityManager');
+            $siteEntityRepository = $entityManager->getRepository(\Omeka\Entity\Site::class);
+            $count = $siteEntityRepository->count(['isPublic' => 1]);
+            if (!$count) {
+                $params =  [
+                    'controller' => 'Omeka\Controller\Login',
+                    'action' => 'login',
+                ];
+                $routeMatch = new RouteMatch($params);
+                $routeMatch->setMatchedRouteName('login');
+                $event->setRouteMatch($routeMatch);
+                return;
+            }
+        }
+
         if (!$settings->get('guestprivate_theme_login')) {
             return;
         }

@@ -24,6 +24,18 @@ class SettingsFieldset extends Fieldset
             ->setAttribute('id', 'guest')
             ->setOption('element_groups', $this->elementGroups)
             ->add([
+                'name' => 'guestprivate_redirect_top_to_login',
+                'type' => Element\Checkbox::class,
+                'options' => [
+                    'element_group' => 'guest',
+                    'label' => 'Redirect default top route to login when there is no public site', // @translate
+                ],
+                'attributes' => [
+                    'id' => 'guestprivate_redirect_top_to_login',
+                    'required' => false,
+                ],
+            ])
+            ->add([
                 'name' => 'guestprivate_theme_login',
                 'type' => Element\Checkbox::class,
                 'options' => [

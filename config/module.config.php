@@ -55,6 +55,7 @@ return [
     ],
     'guestprivate' => [
         'settings' => [
+            'guestprivate_redirect_top_to_login' => false,
             'guestprivate_theme_login' => false,
         ],
     ],
