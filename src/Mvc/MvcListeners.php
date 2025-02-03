@@ -34,15 +34,17 @@ class MvcListeners extends AbstractListenerAggregate
             return;
         }
 
-        /** @var \Omeka\Settings\Settings $settings */
+        /**
+         * @var \Omeka\Settings\Settings $settings
+         * @var \Doctrine\ORM\EntityManager $entityManager
+         */
         $settings = $services->get('Omeka\Settings');
+        $entityManager = $services->get('Omeka\EntityManager');
 
         // Redirect early to login when there is no public site.
         if ($matchedRouteName === 'top'
             && $settings->get('guestprivate_redirect_top_to_login')
         ) {
-            /** @var \Doctrine\ORM\EntityManager $entityManager */
-            $entityManager = $services->get('Omeka\EntityManager');
             $siteEntityRepository = $entityManager->getRepository(\Omeka\Entity\Site::class);
             $count = $siteEntityRepository->count(['isPublic' => 1]);
             if (!$count) {
@@ -53,7 +55,7 @@ class MvcListeners extends AbstractListenerAggregate
                 $routeMatch = new RouteMatch($params);
                 $routeMatch->setMatchedRouteName('login');
                 $event->setRouteMatch($routeMatch);
-                return;
+                // Don't return here in order to theme login page if wanted.
             }
         }
 
@@ -67,7 +69,6 @@ class MvcListeners extends AbstractListenerAggregate
         }
 
         /**
-         * @var \Doctrine\ORM\EntityManager $entityManager
          * @var \Omeka\Entity\Site $siteEntity
          * @var \Omeka\Api\Representation\SiteRepresentation $site
          *
@@ -76,8 +77,6 @@ class MvcListeners extends AbstractListenerAggregate
          */
 
         // The site may be private, so don't use api.
-        $entityManager = $services->get('Omeka\EntityManager');
-
         $siteEntity = $entityManager->find(\Omeka\Entity\Site::class, $defaultSite);
         if (!$siteEntity) {
             $services->get('Omeka\Logger')->err('The setting "default site" refers to an inexisting site.'); // @translate
