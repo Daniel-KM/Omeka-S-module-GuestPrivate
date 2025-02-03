@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-06 00:00+0000\n"
+"POT-Creation-Date: 2025-02-03 00:00+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Daniel Berthereau <Daniel.fr@Berthereau.net>\n"
 "Language-Team: \n"
@@ -17,14 +17,48 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: src/View/Helper/UserBarDelegator.php:124
+#: src/View/Helper/UserBarDelegator.php:129
 msgid "Search manager"
 msgstr "Moteurs de recherche"
 
-#: src/View/Helper/UserBarDelegator.php:131
+#: src/View/Helper/UserBarDelegator.php:136
 msgid "Search config"
 msgstr "Page de recherche"
 
-#: Module.php:49
+#: Module.php:53 config/module.config.php:17
+msgid "Guest private site"
+msgstr "Invité sur site privé"
+
+#: Module.php:99 config/module.config.php:11
 msgid "Guest private"
 msgstr "Invité privé"
+
+#: src/Mvc/MvcListeners.php:86
+msgid "The setting \"default site\" refers to an inexisting site."
+msgstr "Le paramètre « site par défaut » renvoie à un site inexistant."
+
+#: src/Form/SettingsFieldset.php:13 src/Form/SettingsFieldset.php:16
+msgid "Guest"
+msgstr "Invité"
+
+#: src/Form/SettingsFieldset.php:31
+msgid "Redirect default top route to login when there is no public site"
+msgstr ""
+"Rediriger la route Top vers la connexion quand il n’y a pas de site public"
+
+#: src/Form/SettingsFieldset.php:43
+msgid "Apply the theme to the default login page"
+msgstr "Appliquer le thème à la page de connexion par défaut"
+
+#: src/Form/SettingsFieldset.php:55
+msgid "Disable public api"
+msgstr "Désactiver l’api publique"
+
+#: src/Form/SettingsFieldset.php:56
+msgid ""
+"This setting is useful when all sites are private, but resources are public. "
+"The api remains available with credentials."
+msgstr ""
+"Ce paramètre est utile quand tous les sites sont privés, mais que les "
+"ressources sont publiques. L’api reste disponible avec les informations "
+"d’identification."
