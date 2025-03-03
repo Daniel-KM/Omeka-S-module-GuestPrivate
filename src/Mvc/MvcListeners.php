@@ -176,23 +176,21 @@ class MvcListeners extends AbstractListenerAggregate
             return;
         }
 
-        if ($matchedRouteName === 'api-local/default') {
-            $params =  [
-                '__API__' => true,
-                '__KEYAUTH__' => true,
-                'controller' => 'Omeka\Controller\Api',
-            ];
-            $routeMatch = new RouteMatch($params);
-            $routeMatch->setMatchedRouteName('api');
-        } else {
-            $params =  [
-                '__API__' => true,
-                'controller' => 'Omeka\Controller\ApiLocal',
-            ];
-            $routeMatch = new RouteMatch($params);
-            $routeMatch->setMatchedRouteName('api-local');
-        }
+        // Output message directly via 401 instead of 403.
+        // TODO Log access error in Omeka?
 
-        $event->setRouteMatch($routeMatch);
+        http_response_code(401);
+        header('Content-Type: application/ld+json');
+
+        $translator = $services->get('MvcTranslator');
+
+        echo json_encode([
+            '@context' => 'https://www.w3.org/ns/hydra/context.jsonld',
+            '@type' => 'Error',
+            'statusCode' => 401,
+            'title' => $translator->translate('Unauthorized (401)'), // @translate
+            'description' => $translator->translate('You do not have permission to access this resource.'), // @translate'
+        ], 448);
+        die();
     }
 }
