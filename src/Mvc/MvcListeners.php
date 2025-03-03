@@ -171,6 +171,11 @@ class MvcListeners extends AbstractListenerAggregate
             return;
         }
 
+        $settings = $services->get('Omeka\Settings');
+        if (!$settings->get('guestprivate_disable_public_api')) {
+            return;
+        }
+
         $params =  [
             '__API__' => true,
             '__KEYAUTH__' => true,
