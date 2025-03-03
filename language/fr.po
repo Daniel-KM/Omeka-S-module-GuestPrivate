@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-03 00:00+0000\n"
+"POT-Creation-Date: 2025-03-10 00:00+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Daniel Berthereau <Daniel.fr@Berthereau.net>\n"
 "Language-Team: \n"
@@ -16,6 +16,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.2.2\n"
+
+#: src/Mvc/MvcListeners.php:191
+msgid "Unauthorized (401)"
+msgstr "Accès non autorisé (401)"
+
+#: src/Mvc/MvcListeners.php:192
+msgid "You do not have permission to access this resource."
+msgstr "Vous n'êtes pas autorisé à accéder à cette ressource."
 
 #: src/View/Helper/UserBarDelegator.php:129
 msgid "Search manager"
@@ -51,14 +59,18 @@ msgid "Apply the theme to the default login page"
 msgstr "Appliquer le thème à la page de connexion par défaut"
 
 #: src/Form/SettingsFieldset.php:55
-msgid "Disable public api"
-msgstr "Désactiver l’api publique"
+msgid "Disable public api and local api"
+msgstr "Désactiver l’api publique et l’api locale"
 
 #: src/Form/SettingsFieldset.php:56
 msgid ""
 "This setting is useful when all sites are private, but resources are public. "
-"The api remains available with credentials."
+"The api remains available with credentials and the local api remains "
+"available when logged."
 msgstr ""
 "Ce paramètre est utile quand tous les sites sont privés, mais que les "
 "ressources sont publiques. L’api reste disponible avec les informations "
-"d’identification."
+"d’identification et de même pour l’api locale quand on est connecté."
+
+#~ msgid "Forbidden (403)"
+#~ msgstr "Accès interdit (403)"

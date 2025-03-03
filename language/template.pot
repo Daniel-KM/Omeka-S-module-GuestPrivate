@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-03 00:00+0000\n"
+"POT-Creation-Date: 2025-03-10 00:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,14 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: src/Mvc/MvcListeners.php:191
+msgid "Unauthorized (401)"
+msgstr ""
+
+#: src/Mvc/MvcListeners.php:192
+msgid "You do not have permission to access this resource."
+msgstr ""
 
 #: src/View/Helper/UserBarDelegator.php:129
 msgid "Search manager"
@@ -50,11 +58,12 @@ msgid "Apply the theme to the default login page"
 msgstr ""
 
 #: src/Form/SettingsFieldset.php:55
-msgid "Disable public api"
+msgid "Disable public api and local api"
 msgstr ""
 
 #: src/Form/SettingsFieldset.php:56
 msgid ""
 "This setting is useful when all sites are private, but resources are public. "
-"The api remains available with credentials."
+"The api remains available with credentials and the local api remains "
+"available when logged."
 msgstr ""
