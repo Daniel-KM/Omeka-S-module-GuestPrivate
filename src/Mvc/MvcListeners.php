@@ -167,7 +167,7 @@ class MvcListeners extends AbstractListenerAggregate
 
         $routeMatch = $event->getRouteMatch();
         $matchedRouteName = $routeMatch->getMatchedRouteName();
-        if ($matchedRouteName !== 'api/default') {
+        if ($matchedRouteName !== 'api/default' && $matchedRouteName !== 'api-local/default') {
             return;
         }
 
@@ -176,13 +176,23 @@ class MvcListeners extends AbstractListenerAggregate
             return;
         }
 
-        $params =  [
-            '__API__' => true,
-            '__KEYAUTH__' => true,
-            'controller' => 'Omeka\Controller\Api',
-        ];
-        $routeMatch = new RouteMatch($params);
-        $routeMatch->setMatchedRouteName('api');
+        if ($matchedRouteName === 'api-local/default') {
+            $params =  [
+                '__API__' => true,
+                '__KEYAUTH__' => true,
+                'controller' => 'Omeka\Controller\Api',
+            ];
+            $routeMatch = new RouteMatch($params);
+            $routeMatch->setMatchedRouteName('api');
+        } else {
+            $params =  [
+                '__API__' => true,
+                'controller' => 'Omeka\Controller\ApiLocal',
+            ];
+            $routeMatch = new RouteMatch($params);
+            $routeMatch->setMatchedRouteName('api-local');
+        }
+
         $event->setRouteMatch($routeMatch);
     }
 }
