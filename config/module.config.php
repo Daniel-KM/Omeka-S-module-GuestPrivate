@@ -63,7 +63,7 @@ return [
         'settings' => [
             'guestprivate_redirect_top_to_login' => false,
             'guestprivate_theme_login' => false,
-            'guestprivate_disable_public_api' => false,
+            'guestprivate_restrict_api' => '',
         ],
     ],
 ];

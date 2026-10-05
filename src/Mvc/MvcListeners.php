@@ -19,7 +19,7 @@ class MvcListeners extends AbstractListenerAggregate
         );
         $this->listeners[] = $events->attach(
             MvcEvent::EVENT_ROUTE,
-            [$this, 'disablePublicApi']
+            [$this, 'restrictApi']
         );
     }
 
@@ -156,7 +156,7 @@ class MvcListeners extends AbstractListenerAggregate
             ->setParam('outside', true);
     }
 
-    public function disablePublicApi(MvcEvent $event)
+    public function restrictApi(MvcEvent $event)
     {
         $services = $event->getApplication()->getServiceManager();
         $auth = $services->get('Omeka\AuthenticationService');
@@ -165,14 +165,18 @@ class MvcListeners extends AbstractListenerAggregate
             return;
         }
 
-        $routeMatch = $event->getRouteMatch();
-        $matchedRouteName = $routeMatch->getMatchedRouteName();
-        if ($matchedRouteName !== 'api/default' && $matchedRouteName !== 'api-local/default') {
+        $restrictApi = (string) $services->get('Omeka\Settings')->get('guestprivate_restrict_api');
+        if ($restrictApi === '') {
             return;
         }
 
-        $settings = $services->get('Omeka\Settings');
-        if (!$settings->get('guestprivate_disable_public_api')) {
+        $matchedRouteName = $event->getRouteMatch()->getMatchedRouteName();
+        $restrictedRoutes = [
+            'api' => ['api/default'],
+            'api_local' => ['api-local/default'],
+            'all' => ['api/default', 'api-local/default'],
+        ][$restrictApi] ?? [];
+        if (!in_array($matchedRouteName, $restrictedRoutes, true)) {
             return;
         }
 

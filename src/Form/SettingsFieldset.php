@@ -48,15 +48,22 @@ class SettingsFieldset extends Fieldset
                 ],
             ])
             ->add([
-                'name' => 'guestprivate_disable_public_api',
-                'type' => Element\Checkbox::class,
+                'name' => 'guestprivate_restrict_api',
+                'type' => Element\Radio::class,
                 'options' => [
                     'element_group' => 'guest',
-                    'label' => 'Disable public api and local api', // @translate
+                    'label' => 'Restrict api to authenticated users', // @translate
                     'info' => 'This setting is useful when all sites are private, but resources are public. The api remains available with credentials and the local api remains available when logged.', // @translate
+                    'value_options' => [
+                        '' => 'No restriction', // @translate
+                        'api' => 'Public api only', // @translate
+                        'api_local' => 'Local api only', // @translate
+                        'all' => 'Public api and local api', // @translate
+                    ],
                 ],
                 'attributes' => [
-                    'id' => 'guestprivate_disable_public_api',
+                    'id' => 'guestprivate_restrict_api',
+                    'value' => '',
                 ],
             ])
         ;
