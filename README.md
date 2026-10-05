@@ -104,7 +104,7 @@ altered, and that no provisions are either added or removed herefrom.
 Copyright
 ---------
 
-* Copyright Daniel Berthereau, 2023-2025 (see [Daniel-KM] on GitLab)
+* Copyright Daniel Berthereau, 2023-2026 (see [Daniel-KM] on GitLab)
 
 This module was build for the [Fondation Maison de Salins].
 
@@ -115,7 +115,7 @@ This module was build for the [Fondation Maison de Salins].
 [Common]: https://gitlab.com/Daniel-KM/Omeka-S-module-Common
 [GitLab]: https://gitlab.com/Daniel-KM/Omeka-S-module-GuestPrivate
 [installing a module]: https://omeka.org/s/docs/user-manual/modules/#installing-modules
-[module issues]: https://gitlab.com/Daniel-KM/Omeka-S-module-GuestPrivate/-/issues
+[module issues]: https://gitlab.com/Daniel-KM/Omeka-S-module-GuestPrivate/-/work_items
 [CeCILL v2.1]: https://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html
 [GNU/GPL]: https://www.gnu.org/licenses/gpl-3.0.html
 [FSF]: https://www.fsf.org

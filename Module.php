@@ -37,7 +37,7 @@ use Omeka\Module\AbstractModule;
 /**
  * Guest Private.
  *
- * @copyright Daniel Berthereau, 2023-2025
+ * @copyright Daniel Berthereau, 2023-2026
  * @license http://www.cecill.info/licences/Licence_CeCILL_V2.1-en.txt
  */
 class Module extends AbstractModule
@@ -54,6 +54,12 @@ class Module extends AbstractModule
         /** @var \Doctrine\DBAL\Connection $connection */
         $connection = $services->get('Omeka\Connection');
         $connection->executeStatement('DELETE FROM `module` WHERE `id` = "GuestPrivateRole";');
+    }
+
+    protected function preUpgrade(?string $oldVersion, ?string $newVersion): void
+    {
+        // Required during upgrade because the role is set in config.
+        require_once __DIR__ . '/src/Permissions/Acl.php';
     }
 
     public function onBootstrap(MvcEvent $event)
