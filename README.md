@@ -16,6 +16,10 @@ protected resources. Another use case is a site in development with all sites,
 pages and resources set private, but an external person needs to see and check
 them.
 
+The module is compatible with the module [Access]: the access mode "Guest"
+("auth_guest") includes the roles `guest_private` and `guest_private_site`, so
+they can access reserved files like standard guests.
+
 
 Installation
 ------------
@@ -41,6 +45,22 @@ Usage
 -----
 
 Simply set the role "Guest private site" or "Guest private" in the user settings.
+
+### Restrict api
+
+When all sites are private but resources are public, the api may still expose
+the resources to anonymous visitors. The main setting "Restrict api to
+authenticated users" allows to return an error 401 to anonymous requests:
+
+| Option                   | Public api (`/api`) | Local api (`/api-local`) |
+|--------------------------|---------------------|--------------------------|
+| No restriction           | open                | open                     |
+| Public api only          | restricted          | open                     |
+| Local api only           | open                | restricted               |
+| Public api and local api | restricted          | restricted               |
+
+The public api remains available with credentials (api keys) and the local api
+remains available for logged users.
 
 
 Warning
@@ -89,8 +109,10 @@ Copyright
 This module was build for the [Fondation Maison de Salins].
 
 
-[Guest Private Role]: https://gitlab.com/Daniel-KM/Omeka-S-module-GuestPrivate
+[Guest Private]: https://gitlab.com/Daniel-KM/Omeka-S-module-GuestPrivate
 [Omeka S]: https://www.omeka.org/s
+[Access]: https://gitlab.com/Daniel-KM/Omeka-S-module-Access
+[Common]: https://gitlab.com/Daniel-KM/Omeka-S-module-Common
 [GitLab]: https://gitlab.com/Daniel-KM/Omeka-S-module-GuestPrivate
 [installing a module]: https://omeka.org/s/docs/user-manual/modules/#installing-modules
 [module issues]: https://gitlab.com/Daniel-KM/Omeka-S-module-GuestPrivate/-/issues
