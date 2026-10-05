@@ -3,7 +3,7 @@
 namespace GuestPrivate\Service\ControllerPlugin;
 
 use GuestPrivate\Mvc\Controller\Plugin\UserRedirectUrl;
-use Interop\Container\ContainerInterface;
+use Psr\Container\ContainerInterface;
 use Laminas\ServiceManager\Factory\FactoryInterface;
 
 class UserRedirectUrlFactory implements FactoryInterface
