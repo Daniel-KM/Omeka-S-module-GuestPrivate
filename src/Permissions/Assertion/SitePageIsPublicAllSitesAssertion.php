@@ -16,8 +16,8 @@ use Omeka\Entity\SitePage;
  */
 class SitePageIsPublicAllSitesAssertion implements AssertionInterface
 {
-    public function assert(Acl $acl, RoleInterface $role = null,
-        ResourceInterface $resource = null, $privilege = null
+    public function assert(Acl $acl, ?RoleInterface $role = null,
+        ?ResourceInterface $resource = null, $privilege = null
     ) {
         // This method is defined nowhere, but may be needed for automatic call.
         if (method_exists($resource, 'getSitePage')) {
