@@ -1,0 +1,39 @@
+{
+    "name": "daniel-km/omeka-s-module-guest-private",
+    "type": "omeka-s-module",
+    "description": "Module for Omeka S: Add roles guest private site and guest private, who can see all sites and, for the second, private pages and resources, but who cannot access admin board.",
+    "keywords": [
+        "Omeka S",
+        "Omeka S module",
+        "authentication",
+        "front-end"
+    ],
+    "license": "CECILL-2.1",
+    "homepage": "https://gitlab.com/Daniel-KM/omeka-s-module-GuestPrivate",
+    "authors": [
+        {
+            "name": "Daniel Berthereau",
+            "email": "Daniel.packagist@Berthereau.net"
+        }
+    ],
+    "support": {
+        "issues": "https://gitlab.com/Daniel-KM/omeka-s-module-GuestPrivate/-/issues",
+        "forum": "https://forum.omeka.org/"
+    },
+    "_require (not set until Omeka S merges PR #2432)": {
+        "omeka/omeka-s": "^4.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "GuestPrivate\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "GuestPrivateTest\\": "tests/GuestPrivateTest/"
+        }
+    },
+    "extra": {
+        "installer-name": "GuestPrivate"
+    }
+}
