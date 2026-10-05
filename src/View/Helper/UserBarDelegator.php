@@ -59,8 +59,8 @@ class UserBarDelegator extends UserBar
 
         $locale = null;
 
-        $hasAdminRights = $user && $view->userIsAllowed('Omeka\Controller\Admin\Index');
-        if (!$hasAdminRights && !$view->siteSetting('guest_show_user_bar')) {
+        $hasAdminRights = $user && $view->userIsAllowed('Omeka\Controller\Admin\Index', 'index');
+        if (!$hasAdminRights && !$view->siteSetting('guest_show_user_bar_for_guest')) {
             return '';
         }
 
